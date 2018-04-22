@@ -12,7 +12,7 @@ with dev.grab_context():
 		for event in dev.read():
 			if event.value == 1:
 				if event.type == ecodes.EV_KEY:
-					print(event)
+					#print(event)
 					if event.code == 2:
 						chunk += str('1')
 					if event.code == 3:
@@ -37,15 +37,19 @@ with dev.grab_context():
 						product_code = chunk 
 						chunk = '' 
 						#print(product_code)	
-						find = open('products', 'r')
-						for line in find:
-							if product_code in line: 
-								product_code, product, prices = line.split(':')
-						find.close()
-						float(suma)
-						price = float(prices)
-						print product_code , product, price
-						suma = suma + price
-						print (suma + 'EURO') 
-						continue
+						#find = open('products', 'r')
+						#for line in find:
+						#	if product_code in line: 
+						#		product_code, product, prices = line.split(':')
+						#find.close()
+						#float(suma)
+						#price = float(prices)
+						print product_code
+						f = open('products', 'a')
+						f.write(product_code + ':' + raw_input('item:') + ':' + raw_input('price:') + '\n')
+						f.close()
+						print('=====BREAK=====')
+					        #suma = suma + price
+						#print suma 
+						#continue
 
